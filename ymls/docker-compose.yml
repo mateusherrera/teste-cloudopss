@@ -13,6 +13,8 @@ services:
       - 8080:8080
     networks:
       - compose-bridge-opss
+    volumes:
+      - volumecopss:/app-python
     depends_on:
       - mysql
 
