@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: copss-mysql
+    networks:
+      - compose-bridge-opss
+
+  copsspython:
+    image: mateusherrera/copsspython:1.0
+    container_name: copsspython
+    ports:
+      - 8080:8080
+    networks:
+      - compose-bridge-opss
+    depends_on:
+      - mysql
+
+networks:
+  compose-bridge-opss:
+    driver: bridge
