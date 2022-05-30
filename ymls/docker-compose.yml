@@ -1,23 +1,39 @@
 version: "3.9"
+
 services:
   mysql:
-    image: mysql:latest
-    container_name: copss-mysql
-    networks:
-      - compose-bridge-opss
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
   copsspython:
     image: mateusherrera/copsspython:1.0
     container_name: copsspython
     ports:
-      - 8080:8080
+      - 3000:80
     networks:
       - compose-bridge-opss
     volumes:
       - volumecopss:/app-python
     depends_on:
       - mysql
+    stdin_open: true
+    tty: true
 
 networks:
   compose-bridge-opss:
     driver: bridge
+
+volumes:
+  volumecopss:
+    external: true
