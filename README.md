@@ -47,6 +47,7 @@ Primeiramente crie o volume gerenciado pelo docker:
 ###### Executando docker-compose com python e mysql
 
 Para executar o docker-compose do container python com o mysql, vá entre na pasta ymls pelo terminal e use o comando abaixo, já iniciará em modo interativo.
+
 Para isso a imagem do Dockerfile python anterior deve ser criada com o nome: `mateusherrera/copsspython:1.0` ou modificar o esse valor `image:` no arquivo docker-compose.yml
 
 
